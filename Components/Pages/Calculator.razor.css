@@ -1,0 +1,27 @@
+﻿.loanForm {
+    background-color: var(--cf-theme-light);
+    border: solid 1px var(--cf-theme-dark);
+}
+
+.loanForm input {
+    width: 100%;
+    padding: .5rem;
+}
+
+.paymentTitle {
+    color: var(--cf-theme-title);
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.payment {
+    text-align: center;
+    font-weight: bold;
+    color: var(--cf-theme-core);
+    font-family: var(--cf-title-font);
+}
+
+.totalcost {
+    font-weight: bold;
+}

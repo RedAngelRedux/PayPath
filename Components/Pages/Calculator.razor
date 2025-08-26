@@ -1,9 +1,84 @@
 ﻿@page "/calculator"
 
-<div class="containser-xxl my-3">
-<h3>Pay Path Calculator</h3>
+<div class="container-xxl my-3">
+    <h1 class="mb-2">Loan Calculator</h1>
+    <p>
+        Thinking about buying a home or financing a major purchase? Pay Path helps you chart your financial journey with clarity. Use this intuitive 
+        calculator to estimate your monthly payment based on loan amount, interest rate, and term — so you can plan ahead with confidence.
+    </p>
+    <p>    
+        Pay Path is designed to simplify amortized loan calculations for mortgages, auto loans, student loans, and other installment-based financing. 
+        With fixed payments that cover both principal and interest, our tool reveals the true cost of borrowing — including your annual percentage 
+        rate (APR). Just enter your loan details and click Calculate to see a personalized breakdown that puts you in control.
+    </p>
+    <div class="row">
+        <div class="col-12 col-md-6 loanForm p-3 rounded-3">
+            <EditForm EditContext="editContext">
+                <DataAnnotationsValidator />
+                <div class="row gy-2">
+                    <div col="col-12">
+                        <label for="purchaseAmt" class="form-label">Purchase Amount: </label>
+                        <InputNumber id="purchaseAmt" @bind-Value="loan.PurchaseAmount" class="form-control" step="100" />
+                        <ValidationMessage For="() => loan.PurchaseAmount" />
+                    </div>
+                    <div class="col-12">
+                        <label for="term" class="form-label">Term (Years): </label>
+                        <InputNumber id="term" @bind-Value="loan.Term" class="form-control" step="1" />
+                        <ValidationMessage For="() => loan.Term" />
+                    </div>
+                    <div class="col-12">
+                        <label for="rate" class="form-label">Interest Rate (APR %): </label>
+                        <InputNumber id="rate" @bind-Value="loan.Rate" class="form-control" min="0" step=".1" />
+                        <ValidationMessage For="() => loan.Rate" />
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary mt-2" >Calculate</button>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-between px-4 mt-4 mt-md-0">
+            <div class="paymentTitle">
+                <p>Your Monthly Payment</p>
+            </div>
+            <div class="display-1 payment">
+                @loan.Payment.ToString("C")
+            </div>
+            <div class="row border border-1 g-0 p-3 loanForm">
+                <div class="col-6">
+                    <label class="text-start">Purchase Amount</label>
+                </div>
+                <div class="col-6 text-end">
+                    @loan.PurchaseAmount.ToString("C")
+                </div>
+                <div class="col-6">
+                    <label class="text-start">Total Interest</label>
+                </div>
+                <div class="col-6 text-end">
+                    @loan.TotalInterest.ToString("C")
+                </div>
+                <div class="col-6">
+                    <label class="text-start">Total Cost</label>
+                </div>
+                <div class="col-6 text-end totalcost">
+                    @loan.TotalCost.ToString("C")
+                </div>
+            </div>
+            <div class="text-end mt-2">
+                <button class="btn btn-primary">Show Schedule</button>
+            </div>
+        </div>
+    </div>
 </div>
-
 @code {
+    private Loan loan = new();
+    private EditContext? editContext;
 
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(loan);
+        loan.PurchaseAmount = 25000;
+        loan.Term = 5;
+        loan.Rate = 5.0;
+    }
 }
