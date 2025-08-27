@@ -6,7 +6,7 @@ public class Loan
 {
     [Required]
     [Range(1, double.MaxValue, ErrorMessage="Purchase Amount Must Be At Least $1")]
-    public double PurchaseAmount { get; set; }
+    public double Amount { get; set; }
 
     [Range(0.0,100,MinimumIsExclusive = true,ErrorMessage ="THe Interest Rate Must be Between 0.00 and 100")]
     public double Rate { get; set; }

@@ -13,13 +13,13 @@
     </p>
     <div class="row">
         <div class="col-12 col-md-6 loanForm p-3 rounded-3">
-            <EditForm EditContext="editContext">
+            <EditForm EditContext="editContext" OnValidSubmit="@HandleSubmit">
                 <DataAnnotationsValidator />
                 <div class="row gy-2">
                     <div col="col-12">
                         <label for="purchaseAmt" class="form-label">Purchase Amount: </label>
-                        <InputNumber id="purchaseAmt" @bind-Value="loan.PurchaseAmount" class="form-control" step="100" />
-                        <ValidationMessage For="() => loan.PurchaseAmount" />
+                        <InputNumber id="purchaseAmt" @bind-Value="loan.Amount" class="form-control" step="100" />
+                        <ValidationMessage For="() => loan.Amount" />
                     </div>
                     <div class="col-12">
                         <label for="term" class="form-label">Term (Years): </label>
@@ -49,7 +49,7 @@
                     <label class="text-start">Purchase Amount</label>
                 </div>
                 <div class="col-6 text-end">
-                    @loan.PurchaseAmount.ToString("C")
+                    @loan.Amount.ToString("C")
                 </div>
                 <div class="col-6">
                     <label class="text-start">Total Interest</label>
@@ -77,8 +77,13 @@
     protected override void OnInitialized()
     {
         editContext = new EditContext(loan);
-        loan.PurchaseAmount = 25000;
+        loan.Amount = 25000;
         loan.Term = 5;
         loan.Rate = 5.0;
+    }
+
+    private void HandleSubmit()
+    {
+        loan.Payment = LoanUtils.CalculateMonthlyPayment(loan.Amount,loan.Rate,loan.Term);
     }
 }
