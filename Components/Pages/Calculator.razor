@@ -3,12 +3,12 @@
 <div class="container-xxl my-3">
     <h1 class="mb-2">Loan Calculator</h1>
     <p>
-        Thinking about buying a home or financing a major purchase? Pay Path helps you chart your financial journey with clarity. Use this intuitive 
+        Thinking about buying a home or financing a major purchase? Pay Path helps you chart your financial journey with clarity. Use this intuitive
         calculator to estimate your monthly payment based on loan amount, interest rate, and term — so you can plan ahead with confidence.
     </p>
-    <p>    
-        Pay Path is designed to simplify amortized loan calculations for mortgages, auto loans, student loans, and other installment-based financing. 
-        With fixed payments that cover both principal and interest, our tool reveals the true cost of borrowing — including your annual percentage 
+    <p>
+        Pay Path is designed to simplify amortized loan calculations for mortgages, auto loans, student loans, and other installment-based financing.
+        With fixed payments that cover both principal and interest, our tool reveals the true cost of borrowing — including your annual percentage
         rate (APR). Just enter your loan details and click Calculate to see a personalized breakdown that puts you in control.
     </p>
     <div class="row">
@@ -32,7 +32,7 @@
                         <ValidationMessage For="() => loan.Rate" />
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-primary mt-2" >Calculate</button>
+                        <button type="submit" class="btn btn-primary mt-2">Calculate</button>
                     </div>
                 </div>
             </EditForm>
@@ -70,6 +70,7 @@
         </div>
     </div>
 </div>
+
 @code {
     private Loan loan = new();
     private EditContext? editContext;
@@ -84,6 +85,6 @@
 
     private void HandleSubmit()
     {
-        loan.Payment = LoanUtils.CalculateMonthlyPayment(loan.Amount,loan.Rate,loan.Term);
+        loan = LoanUtils.GetPayments(loan);
     }
 }

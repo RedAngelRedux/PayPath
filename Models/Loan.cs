@@ -20,5 +20,5 @@ public class Loan
 
     public double TotalCost { get; set; }
 
-    public List<LoanPayment> AmortizationSchedule { get; set; } = [];
+    public List<LoanPayment> Schedule { get; set; } = [];
 }
