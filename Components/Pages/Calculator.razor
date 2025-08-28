@@ -65,15 +65,23 @@
                 </div>
             </div>
             <div class="text-end mt-2">
-                <button class="btn btn-primary">Show Schedule</button>
+                <button class="btn btn-primary" @onclick="ToggleSchedule">@buttonText</button>
             </div>
         </div>
-    </div>
+        @if(showSchedule)
+        {
+            <div class="col-12 fade-in">
+                <PaymentSchedule Payments="loan.Schedule" />
+            </div>
+        }
+    </div>  
 </div>
 
 @code {
     private Loan loan = new();
     private EditContext? editContext;
+    private bool showSchedule = false;
+    private string buttonText => showSchedule ? "Hide Schedule" : "Show Schedule";
 
     protected override void OnInitialized()
     {
@@ -86,5 +94,11 @@
     private void HandleSubmit()
     {
         loan = LoanUtils.GetPayments(loan);
+        showSchedule = false;
+    }
+
+    private void ToggleSchedule()
+    {
+        showSchedule = !showSchedule;
     }
 }

@@ -1,0 +1,17 @@
+﻿/*.table-custom {
+    --bs-table-bg: var(--cf-theme-100);
+    --bs-table-striped-bg: var(--cf-theme-150);
+    --bs-table-striped-color: var(--cf-theme-dark);
+    --bs-table-active-bg: var(--cf-theme-200);
+    --bs-table-active-color: var(--cf-theme-dark);
+    --bs-table-hover-bg: var(--cf-theme-150);
+    --bs-table-hover-color: var(--cf-theme-dark);
+    color: var(--cf-theme-dark);
+    border-color: var(--cf-theme-600);
+}
+
+.table-custom th {
+    color: var(--cf-theme-850);
+    border-bottom: 2px solid var(--cf-theme-700);
+}
+*/

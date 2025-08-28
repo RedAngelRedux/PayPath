@@ -488,6 +488,7 @@
     --cf-theme-light: var(--cf-tech-sleek-100);
     --cf-theme-dark: var(--cf-tech-sleek-850);
     --cf-theme-title: var(--cf-tech-sleek-600);
+    --bs-table-bg: var(--cf-financial-clarity-100);
 }
 
 [data-cf-theme="financial-clarity"] {
@@ -555,4 +556,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .h1, .h2, .h3, .h4, .h5, .h6 {
     color: var(--cf-theme-850);
+}
+
+table.table-custom {
+    --bs-table-bg: var(--cf-theme-100);
+    --bs-table-striped-bg: var(--cf-theme-150);
+    --bs-table-striped-color: var(--cf-theme-dark);
+    --bs-table-active-bg: var(--cf-theme-200);
+    --bs-table-active-color: var(--cf-theme-dark);
+    --bs-table-hover-bg: var(--cf-theme-150);
+    --bs-table-hover-color: var(--cf-theme-dark);
+    color: var(--cf-theme-dark);
+    border-color: var(--cf-theme-600);
+}
+
+table.table-custom th {
+    color: var(--cf-theme-850);
+    border-bottom: 2px solid var(--cf-theme-700);
 }

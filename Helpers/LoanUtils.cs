@@ -65,11 +65,12 @@ public static class LoanUtils
             loan.Schedule.Add(new LoanPayment
             {
                 Month = month,
-                Amount = Math.Round(loan.Payment,2),
+                Amount = Math.Round(loan.Payment, 2),
                 Principle = Math.Round(monthlyPrincipal, 2),
                 Interest = Math.Round(monthlyInterest, 2),
                 TotalInterest = Math.Round(totalInterest, 2),
-                Balance = Math.Round(balance, 2)
+                //Balance = Math.Round(balance, 2)
+                Balance = balance
             });
         }
 
